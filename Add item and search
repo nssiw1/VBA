@@ -1,0 +1,72 @@
+Private Sub CheckBox1_Click()
+
+End Sub
+
+Private Sub ComboBox1_Change()
+
+End Sub
+
+Private Sub CommandButton1_Click()
+Dim c As Double
+
+c = Range("H2")
+c = c + 1
+Range("A2").Cells(c, 1) = TextBox1.Value
+If CheckBox1.Value Then
+Range("A2").Cells(c, 2) = "Yes"
+Else
+Range("A2").Cells(c, 2) = "No"
+End If
+Range("A2").Cells(c, 3) = ComboBox1.Value
+Range("A2").Cells(c, 4) = TextBox2.Value
+
+Range("H2") = c
+Unload Me
+End Sub
+
+Private Sub CommandButton2_Click()
+Dim myValue As Variant
+
+myValue = InputBox("Input Pre-K or K-6 or junior high or high school Here")
+For x = 1 To Range("H2")
+
+If myValue = Range("A2").Cells(x, 3) Then
+ListBox1.AddItem Range("A2").Cells(x, 1)
+End If
+Next
+
+End Sub
+
+Private Sub Label3_Click()
+
+End Sub
+
+Private Sub ListBox1_Click()
+
+End Sub
+
+Private Sub ScrollBar1_Change()
+TextBox2.Value = Format(ScrollBar1.Value / 10, "currency")
+
+End Sub
+
+Private Sub ScrollBar1_Scroll()
+TextBox2.Value = Format(ScrollBar1.Value / 10, "currency")
+
+End Sub
+
+Private Sub TextBox2_Change()
+
+End Sub
+
+Private Sub UserForm_Click()
+
+End Sub
+
+Private Sub UserForm_Initialize()
+ComboBox1.Value = "Pre-K"
+ComboBox1.AddItem "Pre-K"
+ComboBox1.AddItem "K-6"
+ComboBox1.AddItem "junior high"
+ComboBox1.AddItem "high school"
+End Sub
